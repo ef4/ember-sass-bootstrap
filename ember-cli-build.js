@@ -4,7 +4,10 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
+    bootstrap: {
+      // This is used in our own tests to show that only selected plugins are present.
+      plugins: ['collapse', 'transition']
+    }
   });
 
   /*
