@@ -27,14 +27,15 @@ test('glyphicons are available', function(assert) {
   return new Ember.RSVP.Promise((resolve, reject) => {
     let start = Date.now();
     let interval = setInterval(() => {
-      if (Date.now() - start > 500) {
-        clearInterval(interval);
-        reject(new Error('Never saw glyphicon font become available'));
-      }
       if (this.$('span').width() >=40) {
         clearInterval(interval);
         assert.ok(true);
         resolve();
+        return;
+      }
+      if (Date.now() - start > 500) {
+        clearInterval(interval);
+        reject(new Error('Never saw glyphicon font become available'));
       }
     }, 10);
   });

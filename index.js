@@ -19,7 +19,6 @@ module.exports = {
     var plugins = (app.options.bootstrap || {}).plugins;
     if (Array.isArray(plugins)) {
       plugins.forEach(function(name) {
-        console.log("importing " + name);
         app.import('vendor/bootstrap/bootstrap/' + name + '.js');
       });
     } else if (typeof plugins === 'undefined' || plugins) {
