@@ -16,7 +16,12 @@ module.exports = {
     return stew.mv(bootstrapAssetPath('javascripts'), 'bootstrap');
   },
   included: function(app) {
-    var plugins = (app.options.bootstrap || {}).plugins;
+    while (app.app) {
+      app = app.app;
+    }
+
+    var options = app.options || {};
+    var plugins = options.plugins;
     if (Array.isArray(plugins)) {
       plugins.forEach(function(name) {
         app.import('vendor/bootstrap/bootstrap/' + name + '.js');
