@@ -20,8 +20,7 @@ module.exports = {
       app = app.app;
     }
 
-    var options = app.options || {};
-    var plugins = options.plugins;
+    var plugins = (app.options.bootstrap || {}).plugins;
     if (Array.isArray(plugins)) {
       plugins.forEach(function(name) {
         app.import('vendor/bootstrap/bootstrap/' + name + '.js');
