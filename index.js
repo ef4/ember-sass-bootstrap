@@ -1,30 +1,32 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
-var path = require('path');
-var stew = require('broccoli-stew');
+const path = require('path');
+const stew = require('broccoli-stew');
 
 module.exports = {
   name: 'ember-sass-bootstrap',
-  treeForStyles: function() {
+
+  treeForStyles() {
     return stew.mv(bootstrapAssetPath('stylesheets'), '.');
   },
-  treeForPublic: function() {
+
+  treeForPublic() {
     return stew.mv(bootstrapAssetPath('fonts'), 'fonts');
   },
-  treeForVendor: function() {
+
+  treeForVendor() {
     return stew.mv(bootstrapAssetPath('javascripts'), 'bootstrap');
   },
-  included: function(app) {
+
+  included(app) {
     while (app.app) {
       app = app.app;
     }
 
-    var plugins = (app.options.bootstrap || {}).plugins;
+    let plugins = (app.options.bootstrap || {}).plugins;
     if (Array.isArray(plugins)) {
-      plugins.forEach(function(name) {
-        app.import('vendor/bootstrap/bootstrap/' + name + '.js');
-      });
+      plugins.forEach(name => app.import('vendor/bootstrap/bootstrap/' + name + '.js'));
     } else if (typeof plugins === 'undefined' || plugins) {
       app.import('vendor/bootstrap/bootstrap.js');
     }
@@ -32,6 +34,6 @@ module.exports = {
 };
 
 function bootstrapAssetPath(which) {
-  var bootstrapPath = require.resolve('bootstrap-sass');
+  let bootstrapPath = require.resolve('bootstrap-sass');
   return path.join(path.dirname(bootstrapPath), '..', which);
 }
