@@ -3,6 +3,7 @@
 
 const path = require('path');
 const stew = require('broccoli-stew');
+const fbTransform = require('fastboot-transform');
 
 module.exports = {
   name: 'ember-sass-bootstrap',
@@ -16,7 +17,7 @@ module.exports = {
   },
 
   treeForVendor() {
-    return stew.mv(bootstrapAssetPath('javascripts'), 'bootstrap');
+    return fbTransform(stew.mv(bootstrapAssetPath('javascripts'), 'bootstrap'));
   },
 
   included(app) {

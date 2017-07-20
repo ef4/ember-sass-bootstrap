@@ -20,7 +20,8 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
     "broccoli-stew": "^1.5.0",
-    "ember-cli-babel": "^6.3.0"
+    "ember-cli-babel": "^6.3.0",
+    "fastboot-transform": "^0.1.2"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
