@@ -1,7 +1,7 @@
 {
   "name": "ember-sass-bootstrap",
-  "version": "0.1.3",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.2.0",
+  "description": "Sass Bootstrap packages nicely for ember",
   "keywords": [
     "ember-addon"
   ],
